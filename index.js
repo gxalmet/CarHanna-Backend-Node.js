@@ -35,7 +35,8 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFind
     .then(() => {
         console.log('Conexió establerta amb mongoDB cloud storage');
         //creació del servidor
-        app.listen(port_api, () => {
+        //app.listen(port_api, () => {
+        app.listen('port', process.env.PORT || port_api, () => {
             console.log('Servidor a la ruta url  http://' + server + ":" + port_db)
         })
     })
