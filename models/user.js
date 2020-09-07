@@ -13,4 +13,4 @@ var userSchema = schema({
 });
 
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('collection-user', userSchema);

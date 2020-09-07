@@ -9,6 +9,7 @@ var projectSchema = schema({
     name: String,
     description: String,
     user_id: String,
+    level: Number,
     check_date: {
         begin_date: Date,
         end_date: Date
@@ -21,4 +22,4 @@ var projectSchema = schema({
 
 });
 
-module.exports = mongoose.model('projects', projectSchema);
+module.exports = mongoose.model('collection-project', projectSchema);

@@ -15,4 +15,4 @@ var collegueSchema = schema({
 
 });
 
-module.exports = mongoose.model('collegue', collegueSchema);
+module.exports = mongoose.model('collection-collegue', collegueSchema);

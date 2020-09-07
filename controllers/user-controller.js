@@ -71,8 +71,7 @@ var userController = {
 
                         var promiseHash = helper.encryptPassword(userOK.password);
                         promiseHash.then(resH => {
-                            console.log('resH');
-                            console.log(resH)
+
                             userOK.password = resH;
 
                             return res.status(200).send({ userOK, token });

@@ -21,4 +21,4 @@ var teamSchema = schema({
 
 });
 
-module.exports = mongoose.model('team', teamSchema);
+module.exports = mongoose.model('collection-team', teamSchema);

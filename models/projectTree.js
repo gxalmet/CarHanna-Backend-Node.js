@@ -31,4 +31,4 @@ var projectSchema = schema({
     }]
 });
 
-module.exports = mongoose.model('projectsTree', projectSchema);
+module.exports = mongoose.model('collection-projectsTree', projectSchema);

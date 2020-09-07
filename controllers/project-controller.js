@@ -32,12 +32,35 @@ var projectsController = {
         project.check_date.begin_date = params.check_date.begin_date;
         project.check_date.end_date = params.check_date.end_date;
         project.status = params.status;
+        if (project.parentId) {
 
-        project.save((err, projectcreated) => {
-            if (err) { return res.status(500).send({ message: mes.project.createProject['002'] + err }) }
-            if (!projectcreated) { return res.status(404).send({ message: mes.project.createProject['003'] }) }
-            return res.status(200).send({ project: projectcreated });
-        })
+            Project.findById(ObjectId(project.parentId), (err, projectRead) => {
+                if (err) { return res.status(500).send({ message: mes.project.getProject['002'] }) }
+                if (!projectRead) {
+                    return res.status(404).send({ message: mes.project.getProject['003'] })
+                }
+                project.level = projectRead.level + 1;
+                if (new Date(project.check_date.begin_date) < new Date(projectRead.check_date.begin_date) ||
+                    new Date(project.check_date.end_date) > new Date(projectRead.check_date.end_date)) {
+                    return res.status(404).send({ message: "Chidreen project dates must be included into project parent dates." });
+                }
+                project.save((err, projectcreated) => {
+                    if (err) { return res.status(500).send({ message: mes.project.createProject['002'] + err }) }
+                    if (!projectcreated) { return res.status(404).send({ message: mes.project.createProject['003'] }) }
+                    return res.status(200).send({ project: projectcreated });
+                })
+
+            })
+        } else {
+            project.level = 1;
+            project.save((err, projectcreated) => {
+                if (err) { return res.status(500).send({ message: mes.project.createProject['002'] + err }) }
+                if (!projectcreated) { return res.status(404).send({ message: mes.project.createProject['003'] }) }
+                return res.status(200).send({ project: projectcreated });
+            })
+        }
+
+
 
     },
     getProject: function(req, res) {
@@ -51,12 +74,15 @@ var projectsController = {
 
         var projectId = req.params.id;
 
+
+
         Project.findById(ObjectId(projectId), (err, projectRead) => {
 
             if (err) { return res.status(500).send({ message: mes.project.getProject['002'] }) }
             if (!projectRead) {
                 return res.status(404).send({ message: mes.project.getProject['003'] })
             }
+
             return res.status(200).send({ project: projectRead });
         })
     },
