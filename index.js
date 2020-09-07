@@ -25,9 +25,7 @@ const database = 'CarHanna';
 //     console.log(err);
 // });
 
-// CLoud connection to database
-
-//const uri = "mongodb+srv://dbGxalmet:w852BskeVjpY4VJ@carhanna-cluster.ewacv.gcp.mongodb.net/CARHANNA-db?retryWrites=true&w=majority";
+// Cloud connection to database
 
 const uri = globalApp.uri;
 mongoose.Promise = global.Promise;
