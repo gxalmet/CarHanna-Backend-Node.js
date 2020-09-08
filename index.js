@@ -37,6 +37,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFind
         //creació del servidor
         //app.listen(port_api, () => {
         app.listen('port', process.env.PORT || port_api, () => {
+            console.log(process);
             console.log('Servidor a la ruta url  http://' + process.env.server + ":" + process.env.PORT)
         })
     })
