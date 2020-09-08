@@ -31,14 +31,16 @@ const uri = globalApp.uri;
 mongoose.Promise = global.Promise;
 console.log(uri);
 
+const PORT = process.env.PORT || port_api;
+
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => {
         console.log('Conexió establerta amb mongoDB cloud storage');
         //creació del servidor
         //app.listen(port_api, () => {
-        app.listen('port', process.env.PORT || port_api, () => {
-            console.log(process);
-            console.log('Servidor a la ruta url  http://' + process.env.server + ":" + process.env.PORT)
+        app.listen(PORT, () => {
+
+            console.log(`Our app is running on port ${ PORT }`)
         })
     })
 
