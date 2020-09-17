@@ -10,7 +10,8 @@ module.exports = {
                     '001': 'User create: Error in save process.',
                     '002': 'User create: Error in saved document.',
                     '003': 'User create: Document saved.',
-                    '004': 'User create: Document does not exist in collection.'
+                    '004': 'User create: Document does not exist in collection.',
+                    '005': 'User create: User alredy exists in this APP.'
                 },
                 confirmLogin: {
                     '001': 'User confirmLogin: Document does not exist in the collection.',

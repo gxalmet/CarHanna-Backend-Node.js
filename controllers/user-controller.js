@@ -31,14 +31,14 @@ var userController = {
                     if (err) { return res.status(500).send({ message: mes.user.create['001'] }) }
                     if (!usercreated) { return res.status(404).send({ message: mes.user.create['002'] }) }
                     //usercreated.password = helper.encryptPassword(usercreated.password);
-                    return res.status(200).send({ user: usercreated });
+                    return res.status(200).send({ user: usercreated, message: mes.user.create['003'] });
                 })
             } else {
-                return res.status(200).send({ message: mes.user.create['003'] })
+                return res.status(200).send({ message: mes.user.create['005'] })
             }
         }).
         catch(error => {
-            return res.status(500).send({ message: mes.user.create['004'] })
+            return res.status(500).send({ message: mes.user.create['004'] + error })
 
         })
     },
